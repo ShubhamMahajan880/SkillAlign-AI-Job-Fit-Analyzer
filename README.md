@@ -124,20 +124,21 @@ A progress indicator guides the user through the evaluation steps.
 
 AI-Resume-Job-Matcher/
 │
-├── app.py # Main Streamlit application
-├── requirements.txt # Project dependencies
-├── README.md # Project documentation
-├── .gitignore # Ignored files
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
 │
 ├── src/
-│ ├── resume_parser.py # Resume text & skill extraction
-│ ├── jd_parser.py # Job description skill extraction
-│ ├── matcher.py # Match percentage calculation
-│ ├── eligibility.py # Eligibility classification
-│ └── suggestions.py # Learning recommendations
+│ ├── resume_parser.py
+│ ├── jd_parser.py
+│ ├── matcher.py
+│ ├── eligibility.py
+│ └── suggestions.py
 │
 └── sample_data/
 └── sample_jd.txt
+
 
 
 ---
