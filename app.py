@@ -19,25 +19,45 @@ st.set_page_config(
     layout="centered"
 )
 
+# ---------- Subtle Background Watermark ----------
+st.markdown(
+    """
+    <style>
+    .watermark {
+        position: fixed;
+        bottom: 12px;
+        right: 12px;
+        opacity: 0.15;
+        font-size: 12px;
+        color: black;
+        z-index: 1000;
+    }
+    </style>
+    <div class="watermark">Shubham Mahajan</div>
+    """,
+    unsafe_allow_html=True
+)
+
+# ---------- Header ----------
 st.title("AI-Powered Resume & Job Matcher")
-st.caption(
-    "Evaluate resume eligibility against a job description using skill-based criteria."
+st.caption("Created by Shubham Mahajan")
+
+st.progress(0)
+
+# ---------- STEP 1 ----------
+st.header("Step 1: Upload Resume")
+resume_file = st.file_uploader(
+    "Upload your resume (PDF only)",
+    type=["pdf"]
 )
 
 progress = st.progress(0)
-
-# ===================== STEP 1 =====================
-st.header("Step 1: Upload Resume")
-resume_file = st.file_uploader(
-    "Upload your resume (PDF format only)",
-    type=["pdf"]
-)
 
 if resume_file:
     progress.progress(25)
     st.success("Resume uploaded successfully.")
 
-    # ===================== STEP 2 =====================
+    # ---------- STEP 2 ----------
     st.header("Step 2: Paste Job Description")
     jd_text = st.text_area(
         "Paste the complete job description here"
@@ -68,7 +88,7 @@ if resume_file:
         progress.progress(100)
         st.divider()
 
-        # ===================== RESULTS =====================
+        # ---------- RESULTS ----------
         st.header("Match Evaluation Result")
 
         col1, col2 = st.columns(2)
@@ -77,7 +97,7 @@ if resume_file:
         with col2:
             st.metric("Eligibility Status", status)
 
-        # ===================== CRITERIA =====================
+        # ---------- CRITERIA ----------
         st.subheader("Skill-Based Evaluation Criteria")
 
         criteria_df = pd.DataFrame({
@@ -85,7 +105,7 @@ if resume_file:
         })
         st.table(criteria_df)
 
-        # ===================== MATCHED =====================
+        # ---------- MATCHED ----------
         st.subheader("✅ Matching Criteria (You Qualify For)")
         if matched_skills:
             for skill in matched_skills:
@@ -93,7 +113,7 @@ if resume_file:
         else:
             st.write("No matching criteria satisfied.")
 
-        # ===================== MISSING =====================
+        # ---------- MISSING ----------
         st.subheader("❌ Missing Criteria (Required for This Role)")
         if missing_skills:
             for skill in missing_skills:
@@ -103,23 +123,32 @@ if resume_file:
 
         st.divider()
 
-        # ===================== FINAL DECISION =====================
+        # ---------- FINAL DECISION ----------
         st.subheader("Final Eligibility Explanation")
 
         if status == "Eligible":
             st.success(
-                "You are eligible for this role. "
-                "Your resume satisfies most of the required criteria."
+                "You are eligible for this role based on the matching criteria above."
             )
             st.write("**Skills that qualify you for this role:**")
             for skill in matched_skills:
                 st.write(f"- {skill}")
         else:
             st.warning(
-                "You are not fully eligible for this role yet. "
-                "Improving the skills below will increase your chances."
+                "You are not fully eligible for this role yet."
             )
             st.write("**What you should learn to qualify:**")
             recommendations = learning_recommendations(missing_skills)
             for rec in recommendations:
                 st.write(f"- {rec}")
+
+# ---------- Footer Credit ----------
+st.divider()
+st.markdown(
+    """
+    <div style="text-align: center; color: grey; font-size: 13px; padding-top: 10px;">
+        Built by <b>Shubham Mahajan</b> | AI Resume & Job Matcher
+    </div>
+    """,
+    unsafe_allow_html=True
+)
