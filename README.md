@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \# AI-Powered Resume \& Job Matcher
 
 
@@ -36,3 +37,7 @@ streamlit run app.py
 
 
 
+=======
+# AI-Resume-Job-Matcher
+I created an AI-powered tool to evaluate resume eligibility against job descriptions using skill-based matching.
+>>>>>>> 9fcbda473428fcef46ac69456a81cd8bb8442458
