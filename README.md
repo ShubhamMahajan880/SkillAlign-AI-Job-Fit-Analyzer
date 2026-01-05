@@ -166,13 +166,3 @@ This project is designed, developed, and maintained by **Shubham Mahajan**.
 The application includes an in-app author watermark and footer credit to clearly establish ownership and originality.
 
 ---
-
-## ⭐ Why This Project Matters
-
-This project demonstrates:
-- Practical resume screening logic inspired by ATS systems.
-- Explainable and deterministic decision-making.
-- Clean separation of logic and UI.
-- End-to-end product thinking, not just scripts.
-
-Suitable for showcasing in **SDE / AI / Backend / Full-Stack** interviews.
