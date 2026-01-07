@@ -5,8 +5,6 @@ The system calculates a percentage match, determines eligibility, highlights mat
 
 This project simulates an **ATS-style resume screening process** using transparent, skill-based evaluation.
 
-**Read the full project proposal:**  
-[https://github.com/ShubhamMahajan880/studyAlpha-Ai-Agent](https://github.com/ShubhamMahajan880/studyAlpha-Ai-Agent)
 ---
 
 ## 🌐 Live Demo
